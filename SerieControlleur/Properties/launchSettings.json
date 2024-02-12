@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SerieControlleur (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SerieControlleur (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
