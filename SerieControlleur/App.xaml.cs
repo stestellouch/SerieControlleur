@@ -7,6 +7,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
+using SerieControlleur.ViewModels;
+using SerieControlleur.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,7 +40,7 @@ namespace SerieControlleur
             this.InitializeComponent();
             ServiceCollection services = new ServiceCollection();
             //ViewModels
-            //services.AddTransient<ConvertisseurEuroViewModel>();
+            services.AddTransient<AjoutSerieViewModel>();
             //services.AddTransient<ConvertisseurDeviseViewModel>();
 
             Services = services.BuildServiceProvider();
@@ -61,7 +63,7 @@ namespace SerieControlleur
 
             m_window.Activate();
 
-            //rootFrame.Navigate(typeof(ConvertisseurEuroPage));
+            rootFrame.Navigate(typeof(AjoutSeriePage));
             //rootFrame.Navigate(typeof(ConvertisseurDevisePage));
         }
 

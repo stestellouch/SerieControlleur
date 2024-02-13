@@ -23,7 +23,7 @@ namespace SerieControlleur.Services
 
         }
 
-        public async Task<List<Serie>> GetDevisesAsync(string nomControleur)
+        public async Task<List<Serie>> GetSeriesAsync(string nomControleur)
         {
             try
             {
@@ -34,6 +34,19 @@ namespace SerieControlleur.Services
                 return null;
             }
 
+        }
+        public async Task<bool> PostSerieAsync(string nomControleur, Serie serie)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsJsonAsync(nomControleur, serie);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

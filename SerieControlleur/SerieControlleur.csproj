@@ -12,7 +12,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Views\AjoutDevisePage.xaml" />
+    <None Remove="Views\AjoutSeriePage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,10 +56,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\AjoutDevisePage.xaml">
+    <Page Update="Views\AjoutSeriePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
