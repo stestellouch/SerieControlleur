@@ -1,4 +1,5 @@
-﻿using SerieControlleur.Models;
+﻿using Newtonsoft.Json;
+using SerieControlleur.Models;
 using SerieControlleur.Models.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -48,5 +49,53 @@ namespace SerieControlleur.Services
                 return false;
             }
         }
+        public async Task<bool> DeleteSerieAsync(string nomControleur, int serieId)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.DeleteAsync($"{nomControleur}/{serieId}");
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<Serie> GetSerieByIdAsync(string nomControleur, int serieId)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{nomControleur}/{serieId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<Serie>(responseBody);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> UpdateSerieAsync(string nomControleur, int serieId, Serie serie)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PutAsJsonAsync($"{nomControleur}/{serieId}", serie);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

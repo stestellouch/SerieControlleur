@@ -41,7 +41,7 @@ namespace SerieControlleur
             ServiceCollection services = new ServiceCollection();
             //ViewModels
             services.AddTransient<AjoutSerieViewModel>();
-            //services.AddTransient<ConvertisseurDeviseViewModel>();
+            services.AddTransient<ModificationSerieViewModel>();
 
             Services = services.BuildServiceProvider();
         }
@@ -63,8 +63,8 @@ namespace SerieControlleur
 
             m_window.Activate();
 
-            rootFrame.Navigate(typeof(AjoutSeriePage));
-            //rootFrame.Navigate(typeof(ConvertisseurDevisePage));
+            //rootFrame.Navigate(typeof(AjoutSeriePage));
+            rootFrame.Navigate(typeof(ModifierSeriePage));
         }
 
         private Window m_window;
